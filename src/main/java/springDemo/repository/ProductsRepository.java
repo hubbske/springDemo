@@ -42,14 +42,8 @@ public class ProductsRepository implements Repository {
     public void createProduct(Product product) throws RepositoryException {
         String sql = "INSERT INTO products (sku, brand, name, price) VALUES (:sku, :brand, :name, :price);";
 
-        SqlParameterSource parameters = new MapSqlParameterSource()
-                .addValue("sku", product.getSku())
-                .addValue("brand", product.getBrand())
-                .addValue("name", product.getName())
-                .addValue("price", product.getPrice());
-
         try {
-            jdbcTemplate.update(sql, parameters);
+            jdbcTemplate.update(sql, getSqlParameters(product));
         } catch (DataAccessException e) {
             throw new RepositoryException("Error creating: " + product, e);
         }
@@ -59,14 +53,8 @@ public class ProductsRepository implements Repository {
     public void updateProduct(Product product) throws RepositoryException {
         String sql = "UPDATE products SET brand = :brand, name = :name, price = :price WHERE sku = :sku";
 
-        SqlParameterSource parameters = new MapSqlParameterSource()
-                .addValue("sku", product.getSku())
-                .addValue("brand", product.getBrand())
-                .addValue("name", product.getName())
-                .addValue("price", product.getPrice());
-
         try {
-            jdbcTemplate.update(sql, parameters);
+            jdbcTemplate.update(sql, getSqlParameters(product));
         } catch (DataAccessException e) {
             throw new RepositoryException("Error updating " + product, e);
         }
@@ -94,5 +82,13 @@ public class ProductsRepository implements Repository {
                 .addValue("search", search);
 
         return jdbcTemplate.query(sql, parameters, new ProductRowMapper());
+    }
+
+    private SqlParameterSource getSqlParameters(Product product) {
+        return new MapSqlParameterSource()
+                .addValue("sku", product.getSku())
+                .addValue("brand", product.getBrand())
+                .addValue("name", product.getName())
+                .addValue("price", product.getPrice());
     }
 }
