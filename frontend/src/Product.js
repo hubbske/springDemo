@@ -20,7 +20,7 @@ class ProductRow extends React.Component {
   }
 
   editProduct() {
-    this.setState({ isInputDisabled: !this.state.isInputDisabled });
+    this.setState({ isInputDisabled: true });
     this.props.editProduct({
       sku: this.props.product.sku,
       brand: this.brandInput.value,
