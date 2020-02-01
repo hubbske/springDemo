@@ -1,0 +1,13 @@
+html, body {
+  width: 100%;
+  text-align: center;
+}
+
+#products-table {
+  margin: 100px auto;
+  width: 75%;
+}
+
+#add-product-btn {
+  width: 100%;
+}
