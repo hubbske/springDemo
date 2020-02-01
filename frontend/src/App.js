@@ -1,8 +1,7 @@
-import React from 'react';
-import './App.css';
-import ProductTable from './ProductTable';
-import {sendDelete, sendPut, sendPost} from './utils';
-
+import React from "react";
+import "./App.css";
+import ProductTable from "./ProductTable";
+import { sendDelete, sendPut, sendPost } from "./utils";
 
 class MyComponent extends React.Component {
   constructor(props) {
@@ -21,7 +20,7 @@ class MyComponent extends React.Component {
     fetch("/products")
       .then(res => res.json())
       .then(
-        (result) => {
+        result => {
           this.setState({
             isLoaded: true,
             products: result
@@ -30,19 +29,19 @@ class MyComponent extends React.Component {
         // Note: it's important to handle errors here
         // instead of a catch() block so that we don't swallow
         // exceptions from actual bugs in components.
-        (error) => {
+        error => {
           this.setState({
             isLoaded: true,
             error
           });
         }
-      )
+      );
   }
 
   deleteProduct(sku) {
     sendDelete(sku);
     this.setState({
-      products: this.state.products.filter(product => product.sku !== sku),
+      products: this.state.products.filter(product => product.sku !== sku)
     });
   }
 
@@ -61,19 +60,20 @@ class MyComponent extends React.Component {
     } else if (!isLoaded) {
       return <div>Loading...</div>;
     } else {
-      return <ProductTable 
-        products={products}
-        deleteProduct={this.deleteProduct}
-        editProduct={this.editProduct}
-        createProduct={this.createProduct} />
+      return (
+        <ProductTable
+          products={products}
+          deleteProduct={this.deleteProduct}
+          editProduct={this.editProduct}
+          createProduct={this.createProduct}
+        />
+      );
     }
   }
 }
 
 function App() {
-  return (
-    <MyComponent />
-  );
+  return <MyComponent />;
 }
 
 export default App;
