@@ -8,7 +8,7 @@ class ProductRow extends React.Component {
     };
   }
 
-  handleChange = () => {
+  changeInputState = () => {
     this.setState({ isInputDisabled: !this.state.isInputDisabled });
   }
 
@@ -61,7 +61,7 @@ class ProductRow extends React.Component {
           <button
             type="button"
             className="btn btn-primary"
-            onClick={this.handleChange}
+            onClick={this.changeInputState}
           >
             Edit
           </button>
