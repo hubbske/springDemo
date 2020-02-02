@@ -1,10 +1,6 @@
 import React from "react";
 
 class NewProduct extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   createProduct = () => {
     this.props.createProduct({
       sku: this.skuInput.value,
