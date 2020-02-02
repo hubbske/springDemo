@@ -11,9 +11,6 @@ class MyComponent extends React.Component {
       isLoaded: false,
       products: []
     };
-    this.deleteProduct = this.deleteProduct.bind(this);
-    this.editProduct = this.editProduct.bind(this);
-    this.createProduct = this.createProduct.bind(this);
   }
 
   componentDidMount() {
@@ -38,18 +35,18 @@ class MyComponent extends React.Component {
       );
   }
 
-  deleteProduct(sku) {
+  deleteProduct = (sku) => {
     sendDelete(sku);
     this.setState({
       products: this.state.products.filter(product => product.sku !== sku)
     });
   }
 
-  editProduct(product) {
+  editProduct = (product) => {
     sendPut(JSON.stringify(product));
   }
 
-  createProduct(product) {
+  createProduct = (product) => {
     sendPost(JSON.stringify(product));
   }
 

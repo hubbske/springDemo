@@ -6,20 +6,17 @@ class ProductRow extends React.Component {
     this.state = {
       isInputDisabled: true
     };
-    this.deleteProduct = this.deleteProduct.bind(this);
-    this.editProduct = this.editProduct.bind(this);
-    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange() {
+  handleChange = () => {
     this.setState({ isInputDisabled: !this.state.isInputDisabled });
   }
 
-  deleteProduct() {
+  deleteProduct = () => {
     this.props.deleteProduct(this.props.product.sku);
   }
 
-  editProduct() {
+  editProduct = () => {
     this.setState({ isInputDisabled: true });
     this.props.editProduct({
       sku: this.props.product.sku,
