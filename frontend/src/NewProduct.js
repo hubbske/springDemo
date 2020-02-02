@@ -1,48 +1,60 @@
 import React from "react";
 
 class NewProduct extends React.Component {
-  createProduct = () => {
-    this.props.createProduct({
-      sku: this.skuInput.value,
-      brand: this.brandInput.value,
-      name: this.nameInput.value,
-      price: this.priceInput.value
-    });
+  constructor(props) {
+    super(props)
+    this.state = {
+      sku: "",
+      brand: "",
+      name: "",
+      price: ""
+    }
   }
+
+  handleChange = (e) => {
+    var key = e.target.id;
+    this.setState({ [key]: e.target.value }); 
+  }
+  
+  createProduct = () => this.props.createProduct(this.state);
 
   render() {
     return (
       <tr>
         <th>
           <input
+            id="sku"
             type="text"
-            ref={skuInput => (this.skuInput = skuInput)}
             className="form-control"
             placeholder="sku (xxxx-xxx-xxx)"
+            onChange={this.handleChange}
           />
         </th>
         <th>
           <input
+            id="brand"
             type="text"
-            ref={brandInput => (this.brandInput = brandInput)}
             className="form-control"
             placeholder="brand"
+            onChange={this.handleChange}
           />
         </th>
         <th>
           <input
+            id="name"
             type="text"
-            ref={nameInput => (this.nameInput = nameInput)}
             className="form-control"
             placeholder="name"
+            onChange={this.handleChange}
           />
         </th>
         <th>
           <input
+            id="price"
             type="text"
-            ref={priceInput => (this.priceInput = priceInput)}
             className="form-control"
             placeholder="price"
+            onChange={this.handleChange}
           />
         </th>
         <th colSpan="3">
