@@ -50,7 +50,7 @@ class ProductRow extends React.Component {
         </td>
         <td>
           <input
-            type="text"
+            type="number"
             ref={priceInput => (this.priceInput = priceInput)}
             className="form-control"
             defaultValue={this.props.product.price}

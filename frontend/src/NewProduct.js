@@ -51,7 +51,7 @@ class NewProduct extends React.Component {
         <th>
           <input
             id="price"
-            type="text"
+            type="number"
             className="form-control"
             placeholder="price"
             onChange={this.handleChange}
