@@ -3,10 +3,9 @@ import React from "react";
 class NewProduct extends React.Component {
   constructor(props) {
     super(props);
-    this.createProduct = this.createProduct.bind(this);
   }
 
-  createProduct() {
+  createProduct = () => {
     this.props.createProduct({
       sku: this.skuInput.value,
       brand: this.brandInput.value,
@@ -23,7 +22,7 @@ class NewProduct extends React.Component {
             type="text"
             ref={skuInput => (this.skuInput = skuInput)}
             className="form-control"
-            placeholder="sku"
+            placeholder="sku (xxxx-xxx-xxx)"
           />
         </th>
         <th>
