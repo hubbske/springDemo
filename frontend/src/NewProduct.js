@@ -2,20 +2,20 @@ import React from "react";
 
 class NewProduct extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       sku: "",
       brand: "",
       name: "",
       price: ""
-    }
+    };
   }
 
-  handleChange = (e) => {
+  handleChange = e => {
     var key = e.target.id;
-    this.setState({ [key]: e.target.value }); 
-  }
-  
+    this.setState({ [key]: e.target.value });
+  };
+
   createProduct = () => this.props.createProduct(this.state);
 
   render() {
