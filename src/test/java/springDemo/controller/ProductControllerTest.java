@@ -50,6 +50,28 @@ public class ProductControllerTest {
     }
 
     @Test
+    public void testGetAll() throws Exception {
+        List<Product> products = new ArrayList<>();
+        products.add(product);
+        when(service.getAllProducts()).thenReturn(products);
+
+        mvc.perform(get("/products/")
+                .contentType(APPLICATION_JSON))
+                .andExpect(status().isOk());
+
+    }
+
+    @Test
+    public void testGetAllExceptionReturnsInternalError() throws Exception {
+        when(service.getAllProducts()).thenThrow(new RepositoryException("Error getting products"));
+
+        mvc.perform(get("/products/")
+                .contentType(APPLICATION_JSON))
+                .andExpect(status().isInternalServerError());
+
+    }
+
+    @Test
     public void testGetProduct() throws Exception {
         when(service.getProduct(product.getSku())).thenReturn(product);
 
@@ -128,7 +150,7 @@ public class ProductControllerTest {
     }
 
     @Test
-    public void updateProductCreatesProductIfNonexistent() throws Exception {
+    public void testUpdateProductCreatesProductIfNonexistent() throws Exception {
         when(service.getProduct(product.getSku())).thenReturn(null);
 
         String productJson = mapper.writeValueAsString(product);
