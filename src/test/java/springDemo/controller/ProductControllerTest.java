@@ -134,7 +134,7 @@ public class ProductControllerTest {
     }
 
     @Test
-    public void findProducts() throws Exception {
+    public void testFindProducts() throws Exception {
         List<Product> searchResults = new ArrayList<>();
         searchResults.add(product);
 
@@ -162,7 +162,7 @@ public class ProductControllerTest {
     }
 
     @Test
-    public void updateProductReturnsOkIfExists() throws Exception {
+    public void testUpdateProductReturnsNoContentIfExists() throws Exception {
         when(service.getProduct(product.getSku())).thenReturn(product);
 
         String productJson = mapper.writeValueAsString(product);
