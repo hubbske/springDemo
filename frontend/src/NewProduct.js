@@ -11,10 +11,7 @@ class NewProduct extends React.Component {
     };
   }
 
-  handleChange = e => {
-    var key = e.target.id;
-    this.setState({ [key]: e.target.value });
-  };
+  handleChange = e => this.setState({ [e.target.id]: e.target.value });
 
   createProduct = () => this.props.createProduct(this.state);
 

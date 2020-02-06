@@ -8,13 +8,9 @@ class ProductRow extends React.Component {
     };
   }
 
-  changeInputState = () => {
-    this.setState({ isInputDisabled: !this.state.isInputDisabled });
-  }
+  changeInputState = () => this.setState({ isInputDisabled: !this.state.isInputDisabled });
 
-  deleteProduct = () => {
-    this.props.deleteProduct(this.props.product.sku);
-  }
+  deleteProduct = () => this.props.deleteProduct(this.props.product.sku);
 
   editProduct = () => {
     this.setState({ isInputDisabled: true });
@@ -24,7 +20,7 @@ class ProductRow extends React.Component {
       name: this.nameInput.value,
       price: this.priceInput.value
     });
-  }
+  };
 
   render() {
     return (

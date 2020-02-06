@@ -32,5 +32,5 @@ export const sendDelete = id => {
       Accept: "application/json",
       "Content-Type": "application/json"
     }
-  });
+  })
 };

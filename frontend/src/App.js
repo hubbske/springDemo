@@ -32,20 +32,16 @@ class MyComponent extends React.Component {
       );
   }
 
-  deleteProduct = (sku) => {
+  deleteProduct = sku => {
     sendDelete(sku);
     this.setState({
       products: this.state.products.filter(product => product.sku !== sku)
     });
-  }
+  };
 
-  editProduct = (product) => {
-    sendPut(JSON.stringify(product));
-  }
+  editProduct = product => sendPut(JSON.stringify(product));
 
-  createProduct = (product) => {
-    sendPost(JSON.stringify(product));
-  }
+  createProduct = product => sendPost(JSON.stringify(product));
 
   render() {
     const { error, isLoaded, products } = this.state;
